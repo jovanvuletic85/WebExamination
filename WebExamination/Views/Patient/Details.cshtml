@@ -1,0 +1,83 @@
+﻿@model WebExamination.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.Name
+        </dd>
+
+        <dt>
+            Surname
+        </dt>
+
+        <dd>
+            @Model.Surname
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Model.Date.ToShortDateString()
+        </dd>
+
+        <dt>
+            Identification Number
+        </dt>
+
+        <dd>
+            @Model.IdentificationNumber
+        </dd>
+
+        <dt>
+            City
+        </dt>
+
+        <dd>
+            @Model.City
+        </dd>
+
+        <dt>
+            Review
+        </dt>
+
+        <dd>
+            @Model.Review
+        </dd>
+
+        <dt>
+            Dentist
+        </dt>
+
+        <dd>
+            @Model.Dentist
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.Identity.Name == Model.Dentist)
+    {
+        <a href="@($"/Patient/Edit/{Model.PatientId}")">Edit</a>
+    }
+    else
+    {
+        <a href="/Patient/Index">Back to list</a>
+    }
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |*@
+
+</p>

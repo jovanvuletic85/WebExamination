@@ -1,0 +1,49 @@
+﻿@model WebExamination.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+    <form action="/Account/Register" class="form-horizontal" method="post" role="form">
+        <input name="__RequestVerificationToken" type="hidden" value="wyeMQnrGU8gepCmlxq04_cbxaPoQVLTb2qgDA8x_EBPCy_ocKxiv5KH1Qnja57o1dvKpuLr1Bsgr6u1n8ImqmURfHJ-jPNZ6dfQNLyokpj41" />    <h4>Create a new account.</h4>
+        <hr />
+        <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
+            <ul>
+                <li style="display:none"></li>
+            </ul>
+        </div>    <div class="form-group">
+            <label class="col-md-2 control-label" for="Email">Email</label>
+            <div class="col-md-10">
+                <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="Password">Password</label>
+            <div class="col-md-10">
+                <input class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="ConfirmPassword">Confirm password</label>
+            <div class="col-md-10">
+                <input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    </form>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

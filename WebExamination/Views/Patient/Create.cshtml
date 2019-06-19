@@ -1,0 +1,82 @@
+﻿@model WebExamination.Models.Patient
+
+@{
+    ViewBag.Title = "Create";
+}
+<br />
+<br />
+<form action="/Patient/Create" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="Dentist"></label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Enter a dentist" id="Dentist" name="Dentist" type="hidden"  value="@User.Identity.Name" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Dentist" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Name">Name</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Enter a name" id="Name" name="Name" type="text" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Surname">Surname</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Enter a surname" id="Surname" name="Surname" type="text" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Surname" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Date">Date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-date="The field Date must be a date." data-val-required="Enter a MM/dd/yyyy" id="Date" name="Date" type="datetime" readonly value="@DateTime.Now.ToString("MM/dd/yyyy")" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Date" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="IdentificationNumber">IdentificationNumber</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field IdentificationNumber must be a number." data-val-regex="You must enter numbers" data-val-regex-pattern="[0-9]*$" data-val-required="Enter a identification number" id="IdentificationNumber" name="IdentificationNumber" type="number" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="IdentificationNumber" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="City">City</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-required="Enter a city" id="City" name="City" type="text" value="" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="City" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Review">Review</label>
+            <div class="col-md-10">
+                <textarea class="form-control text-box multi-line" data-val="true" data-val-length="Enter minimum 10 and maximum 300 characters" data-val-length-max="300" data-val-length-min="10" data-val-required="Enter a review" id="Review" name="Review">
+</textarea>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Review" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a href="/Patient">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

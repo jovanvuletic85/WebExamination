@@ -1,0 +1,80 @@
+﻿@model WebExamination.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Dentist
+        </dt>
+
+        <dd>
+            @Model.Dentist
+        </dd>
+
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Model.Name
+        </dd>
+
+        <dt>
+            Surname
+        </dt>
+
+        <dd>
+            @Model.Surname
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Model.Date
+        </dd>
+
+        <dt>
+            Identification Number
+        </dt>
+
+        <dd>
+            @Model.IdentificationNumber
+        </dd>
+
+        <dt>
+            City
+        </dt>
+
+        <dd>
+            @Model.City
+        </dd>
+
+        <dt>
+            Review
+        </dt>
+
+        <dd>
+            @Model.Review
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

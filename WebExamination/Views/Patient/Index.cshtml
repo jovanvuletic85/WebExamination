@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebExamination.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of patients</h2>
+
+@if (Request.IsAuthenticated)
+{
+    <p>
+        <a href="/Patient/Create">New patient</a>
+    </p>
+}
+
+else
+{
+    <p>
+        Insert a new patient<br />
+        <a href="/Account/Login">Log in</a>
+    </p>
+}
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            No
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Assigned dentist
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var p in Model) {
+    <tr>
+        <td>
+            @p.PatientId
+        </td>
+        <td>
+            @p.Name
+        </td>
+        <td>
+            @p.Surname
+        </td>
+        <td>
+            @p.City
+        </td>
+        <td>
+            @p.Dentist
+        </td>
+        <td>
+            @if (User.Identity.Name == p.Dentist)
+            {
+                <span>
+                    <a href="@($"/Patient/Edit/{p.PatientId}")">Edit</a> |
+                    <a href="@($"/Patient/Delete/{p.PatientId}")">Delete</a>
+                </span>
+            }
+            else
+            {
+                <span>
+                    <a href="@($"/Patient/Details/{p.PatientId}")">Details</a>
+                </span>
+            }
+        </td>
+    </tr>
+}
+
+</table>
